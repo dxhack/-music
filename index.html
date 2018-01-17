@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>开始</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <img src="img/mis-bg.jpg " class="startbg" />
+    <div class="content">
+        <img src="img/mis_031.png" class="msi01" />
+        <a href="index2.html" class="playBtn"></a>
+        <a href="javascript:void(0)" class="helpBtn">帮助</a>
+       
+    </div>
+     <div class="win">
+         <div class="wincont">
+             <div class="wintitle">帮助  <a href="javascript:void(0)" class="closeBtn"></a></div>
+             <div class="wintxt">
+                 <p>点击start进入播放页，在列表中选择您喜欢的音乐</p>
+             </div>
+       
+         </div>
+     </div>
+</body>
+</html>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(" .helpBtn").click(function () {
+            $(".win").show();
+            $(".win").animate({ 'top': "0" }, 300, function () {
+             
+            })
+        })
+        $(".win .closeBtn").click(function () {
+            $(".win").animate({'top':"100%"}, 300, function () {
+               $(".win").hide();
+            })
+        })
+    })
+</script>

@@ -1,0 +1,442 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font: 14px "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+    background: #333;
+    color: #fff;
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *+height:1%;
+}
+
+.menuBtn {
+    background: url(../img/mis2_03.png) no-repeat;
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    cursor:pointer;
+    z-index:9999;
+}
+
+#player {
+    height: 130px;
+    margin: 25px auto 30px;
+    position: relative;
+}
+
+#player .cover {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #333;
+    overflow: hidden;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 100%;
+    width: 240px;
+    height: 240px;
+    -webkit-box-shadow: 0 2px 10px black;
+    margin: 30px auto;
+}
+
+#player .cover.active {
+}
+
+#player .cover img {
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 100%;
+    width: 240px;
+    height: 240px;
+}
+
+#player .ctrl {
+    text-shadow: 0 1px 2px #000;
+    line-height: 16px;
+    width: 245px;
+    margin: 0 auto;
+}
+
+#player .ctrl .tag {
+    text-align: center;
+}
+
+#player .ctrl .tag strong, #player .ctrl .tag span {
+    display: block;
+    text-overflow: ellipsis;
+    font-size: 20px;
+}
+
+#player .ctrl .tag span {
+    font-size: 14px;
+    margin-top: 12px;
+    color: #fff;
+}
+
+#player .ctrl .icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    opacity: 0.6;
+    cursor: pointer;
+    width: 45px;
+    height: 45px;
+    -moz-transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    vertical-align: middle;
+}
+
+#player .ctrl .icon:hover, #player .ctrl .icon.enable,#player .ctrl .icon:active {
+    opacity: 1;
+}
+
+#player .ctrl .icon:active {
+    opacity: 0.3;
+}
+
+#player .ctrl .control {
+    margin-top: 20px;
+    height: 60px;
+}
+
+#player .ctrl .control .rewind {
+    /*background-image: url(../images/rewind.png);*/
+    background-image: url(../img/mis2_14.png);
+    background-size: cover;
+}
+
+#player .ctrl .control .playback {
+    background-image: url(../img/play.png);
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    margin: 0 42px;
+}
+
+#player .ctrl .control .playback.playing {
+    background-image: url(../img/pause.png);
+}
+
+#player .ctrl .control .fastforward {
+    /*background-image: url(../images/fastforward.png);*/
+    background-image: url(../img/mis2_17.png);
+    background-size: cover;
+}
+
+#player .ctrl .control .volume .mute {
+    background-image: url(../images/volume.png);
+}
+
+#player .ctrl .control .volume .mute.enable {
+    background-image: url(../images/mute.png);
+}
+
+#player .ctrl .control .volume .slider {
+    margin-top: 11px;
+    margin-left: 10px;
+    width: 100px;
+}
+
+#player .ctrl .progress {
+    margin-top: 10px;
+    position: relative;
+    margin-bottom: 8px;
+}
+
+#player .ctrl .progress .timer {
+    font-size: 12px;
+    color: #ccc;
+    position: absolute;
+    left: -25px;
+    top: -4px;
+}
+
+#player .ctrl .progress .allTime {
+    position: absolute;
+    right: -20px;
+    font-size: 12px;
+    top: -4px;
+}
+
+
+
+.slider {
+    background: rgba(0, 0, 0, 0.3);
+    height: 6px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) inset;
+    width:215px;
+    margin:0 auto;
+}
+
+.slider:hover a, .slider.enable a {
+    opacity: 1;
+}
+
+.slider a {
+    background: #47ecbc;
+    margin-left: -7px;
+    position: absolute;
+    top: -4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+.slider .loaded, .slider .pace {
+    position: absolute;
+    height: 100%;
+    opacity: 0.7;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.slider .loaded {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.slider .pace {
+    background: #47ecbc;
+}
+#menu .title {
+    height:50px;
+    text-align:center; font-size:16px;
+    color:#fff;
+    line-height:50px;
+    position:relative;
+}
+#menu  .tip {
+    background:rgba(0,0,0,0.2);
+    font-size:12px;
+    text-indent:20px;
+    line-height:30px;
+    color:#a2a5ac;
+    position:relative;
+
+}
+#playlist {
+    margin: 0 auto 50px;
+    padding: 10px 15px;
+    list-style: none;
+    position: relative;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    /*-moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);*/
+}
+
+#playlist li {
+    color: #fff;
+    cursor: pointer;
+    text-overflow: ellipsis;
+    -moz-transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    width: 33.33%;
+    box-sizing: border-box;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    font-size: 10px;
+}
+
+#playlist li.playing img {
+    -webkit-box-shadow: 0 2px 10px #47ecbc;
+}
+
+#playlist li img {
+    height: 90px;
+    width: 90px;
+    -webkit-box-shadow: 0 2px 10px black;
+    border-radius: 100%;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/*#playlist li.playing {
+    background: url(../images/playing.png) no-repeat 0 center;
+    color: #fff;
+    font-weight: bold;
+}*/
+
+#playlist li .songName {
+    color: #47ecbc;
+    font-size: 14px;
+    margin: 10px auto 5px;
+}
+
+/*开始页面*/
+
+.startbg {
+    width: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+}
+.content .msi01 {
+    width: 64%;
+    display: block;
+    margin: 100px auto 60px;
+}
+@media all and (min-width: 1200px) {
+  .content .msi01 {
+    width:280px;
+  
+}
+}
+
+
+
+.content .playBtn {
+    display: block;
+    background: url(../img/mis2_032.png) no-repeat;
+    height: 40px;
+    width: 120px;
+    background-size: 100% 100%;
+    margin: 0 auto;
+}
+
+.content .helpBtn,.selected {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    height: 25px;
+    width: 50px;
+    font-size: 14px;
+    border: 1px solid #47ecbc;
+    color: #47ecbc;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 25px;
+}
+.selected {  
+  bottom:0;
+    text-indent:0;
+ 
+}
+/*弹出框*/
+.win {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.4);
+    top: 100%;
+    left: 0;
+    display: none;
+ 
+}
+
+.win .wincont {
+    width: 80%;
+    margin: 10% auto;
+    height: 80%;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.win .wincont .wintitle {
+    height: 40px;
+    background: #47ecbc;
+    color: #056f50;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.win .wincont .wintxt {
+    color: #333;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.win .wincont .closeBtn {
+    background: url(../img/close.png) no-repeat;
+    height: 25px;
+    width: 25px;
+    background-size: cover;
+    display: block;
+    position: absolute;
+    right: -12px;
+    top: -8px;
+}
